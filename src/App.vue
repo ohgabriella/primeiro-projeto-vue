@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h1>{{ titulo }}</h1>
-    <ul>
-      <li v-for="foto of fotos">
+  <div class="corpo">
+    <h1 class = "centralizar">{{ titulo }}</h1>
+    <ul class= "listarfotos">
+      <li class = "listafotositem" v-for="foto of fotos">
        <img v-bind:src="foto.url" v-bind:alt="foto.titulo">
       </li>
 
@@ -18,7 +18,6 @@ export default {
       fotos: []
     }
   },
-
   created(){
     this.$http.get('http://localhost:3000/v1/fotos')
       .then( res =>  res.json())
@@ -28,5 +27,22 @@ export default {
 </script>
 
 <style>
+.corpo{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  width: 96%;
+  margin: 0 auto;
+}
+
+.centralizar{
+  text-align: center;
+}
+
+.listarfotos{
+  list-style: none;
+}
+
+.listafotositem{
+  display: inline-block;
+}
 
 </style>
