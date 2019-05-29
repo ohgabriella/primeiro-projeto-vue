@@ -7,14 +7,21 @@
         <meu-painel :titulo="foto.titulo">
           <img class="imagem-responsiva" v-bind:src="foto.url" v-bind:alt="foto.titulo">
         </meu-painel>
-        
+
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import Painel from './components/shared/painel/Painel.vue';
+
 export default {
+
+  components: {
+    'meu-painel': Painel
+  },
+
   data() {
     return {
       titulo: "Alurapic",
