@@ -3,14 +3,11 @@
     <h1 class="centralizar">{{ titulo }}</h1>
     <ul class="listarfotos">
       <li class="listafotositem" v-for="foto of fotos">
-       
-        <div class="painel">
-          <h2 class="painel-titulo">{{foto.titulo}}</h2>
-          <div class="painel-corpo">
-            <img class="imagem-responsiva" v-bind:src="foto.url" v-bind:alt="foto.titulo">
-          </div>
-        </div>
-      
+
+        <meu-painel :titulo="foto.titulo">
+          <img class="imagem-responsiva" v-bind:src="foto.url" v-bind:alt="foto.titulo">
+        </meu-painel>
+        
       </li>
     </ul>
   </div>
@@ -52,32 +49,7 @@ export default {
   display: inline-block;
 }
 
-.imagem-responsiva{
+.imagem-responsiva {
   width: 100%;
 }
-
-/* estilo do painel */ 
-
-   .painel {
-    padding: 0 auto;
-    border: solid 2px peru;
-    display: inline-block;
-    margin: 5px;
-    box-shadow: 5px 5px 10px grey;
-    width: 200px;
-    height: 100%;
-    vertical-align: top;
-    text-align: center;
-  }
-
-  .painel .painel-titulo {
-    text-align: center;
-    border: solid 2px;
-    background: purple;
-    margin: 0 0 15px 0;
-    padding: 10px;
-    text-transform: uppercase;
-    color: blanchedalmond;  
-    }
-
 </style>
