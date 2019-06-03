@@ -1,46 +1,44 @@
 <template>
   <div class="corpo">
     <h1 class="centralizar">{{ titulo }}</h1>
-      <input type="search" class="filtro" v-on:input="filtro = $event.target.value" placeholder="filtre pelo título da foto">
-      <ul class="listarfotos">
-
+    <input
+      type="search"
+      class="filtro"
+      v-on:input="filtro = $event.target.value"
+      placeholder="filtre pelo título da foto"
+    >
+    <ul class="listarfotos">
       <li class="listafotositem" v-for="foto of fotosComFiltro">
         <meu-painel :titulo="foto.titulo">
-        <div v-show = "false">
           <img class="imagem-responsiva" v-bind:src="foto.url" v-bind:alt="foto.titulo">
-      </div>
         </meu-painel>
       </li>
-
-
     </ul>
   </div>
 </template>
 
 <script>
-import Painel from './components/shared/painel/Painel.vue';
+import Painel from "./components/shared/painel/Painel.vue";
 
 export default {
-
   components: {
-    'meu-painel': Painel
+    "meu-painel": Painel
   },
 
   data() {
     return {
       titulo: "Alurapic",
       fotos: [],
-      filtro: ''
-
+      filtro: ""
     };
   },
 
   computed: {
-    fotosComFiltro(){
-      if(this.filtro){
-        let exp = new RegExp(this.filtro.trim(), 'i');
+    fotosComFiltro() {
+      if (this.filtro) {
+        let exp = new RegExp(this.filtro.trim(), "i");
         return this.fotos.filter(foto => exp.test(foto.titulo));
-      }else{
+      } else {
         return this.fotos;
       }
     }
@@ -79,8 +77,7 @@ export default {
 }
 
 .filtro {
-    display: block;
-    width: 100%;
-  }
-
+  display: block;
+  width: 100%;
+}
 </style>

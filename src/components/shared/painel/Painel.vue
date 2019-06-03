@@ -1,14 +1,22 @@
 <template>
   <div class="painel">
-    <h2 class="painel-titulo">{{ titulo }}</h2>
-    <slot class="painel-corpo">
+    <h2 class="painel-titulo" v-on:dbclick="visivel = !visivel" >{{ titulo }}</h2>
+    <div v-show = "visivel">
+      <slot class="painel-corpo">
     </slot>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-    props: ['titulo']
+    props: ['titulo'],
+
+    data (){
+      return {
+        visivel: true
+      }
+    }
 }
 </script>
 
