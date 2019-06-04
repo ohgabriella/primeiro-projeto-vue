@@ -8,24 +8,21 @@
     </div>
 
     <ul class="listarfotos">
-      <li class="listafotositem" v-for="foto of fotos">
-
+      <li class="listafotositem" v-for="foto of fotosComFiltro">
         <meu-painel :titulo="foto.titulo">
           <img class="imagem-responsiva" v-bind:src="foto.url" v-bind:alt="foto.titulo">
         </meu-painel>
-
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import Painel from './components/shared/painel/Painel.vue';
+import Painel from "./components/shared/painel/Painel.vue";
 
 export default {
-
   components: {
-    'meu-painel': Painel
+    "meu-painel": Painel
   },
 
   data() {
@@ -35,6 +32,18 @@ export default {
       filtro: ''
     };
   },
+
+  computed: {
+    fotosComFiltro() {
+      if (this.filtro) {
+        let exp = new RegExp(this.filtro.trim(), "i");
+        return this.fotos.filter(foto => exp.test(foto.titulo));
+      } else {
+        return this.fotos;
+      }
+    }
+  },
+
   created() {
     this.$http
       .get("http://localhost:3000/v1/fotos")
@@ -67,8 +76,14 @@ export default {
   width: 100%;
 }
 
+<<<<<<< HEAD
 .filtro{
   display: block;
   width:100%;
+=======
+.filtro {
+  display: block;
+  width: 100%;
+>>>>>>> 7a9ab73293f12d56294d8132227ce3117f902dac
 }
 </style>
