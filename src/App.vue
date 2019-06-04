@@ -1,6 +1,12 @@
 <template>
   <div class="corpo">
     <h1 class="centralizar">{{ titulo }}</h1>
+
+    <div>
+    Filtre pelo título da foto: 
+    <input type="search" class="filtro" v-on:input="filtro=$event.target.value" placeholder="escreva o título">
+    </div>
+
     <ul class="listarfotos">
       <li class="listafotositem" v-for="foto of fotos">
 
@@ -25,7 +31,8 @@ export default {
   data() {
     return {
       titulo: "Alurapic",
-      fotos: []
+      fotos: [],
+      filtro: ''
     };
   },
   created() {
@@ -58,5 +65,10 @@ export default {
 
 .imagem-responsiva {
   width: 100%;
+}
+
+.filtro{
+  display: block;
+  width:100%;
 }
 </style>
