@@ -1,6 +1,15 @@
 <template>
   <div class="corpo">
-       
+
+    <nav>
+      <li>
+
+        </li>
+        
+    </nav>
+       <router-view>
+
+       </router-view>
   </div>
 </template>
 
