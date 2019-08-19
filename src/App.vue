@@ -3,10 +3,8 @@
 
    <nav>      
    <ul>        
-   <li> <router-link to="/">HOME</router-link>        
-   </li>        
-   <li> <router-link to="/cadastro">CADASTRO</router-link>        
-   </li>      
+   <li v-for = "route in routes"> <router-link :to="route.path ? route.path: '/'">{{ route.titulo}}</router-link>        
+   </li>            
    </ul>    
    </nav>    
    <router-view>    
@@ -16,7 +14,15 @@
 </template>
 
 <script>
+import { routes } from './routes';
 
+export default {
+  data () {
+    return {
+      routes
+    }
+  }
+}
 </script>
 
 <style>
