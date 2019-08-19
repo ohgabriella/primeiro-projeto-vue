@@ -1,9 +1,11 @@
 <template>
   <div class="painel">
     <h2 class="painel-titulo" v-on:dblclick="visivel = !visivel">{{ titulo }}</h2>
+    <transition class="pagina">
     <div v-show="visivel">
       <slot class="painel-corpo"></slot>
     </div>
+    </transition>
   </div>
 </template>
 
@@ -42,5 +44,13 @@ export default {
   padding: 10px;
   text-transform: uppercase;
   color: blanchedalmond;
+}
+
+.pagina-enter, .pagina-leave-active{
+  opacity: 0;
+}
+
+.pagina-enter-active, .pagina-leave-active {
+  transition: opacity .4s;
 }
 </style>
