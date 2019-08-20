@@ -4,7 +4,19 @@
 
 <script>
 export default {
-  props: ["tipo", "rotulo", "confirmacao", "estilo"],
+  props: {
+    tipo: {
+      type: String,
+      required: true
+    },
+    rotulo: {
+      type: String,
+      required: true
+    },
+    confirmacao:  Boolean,
+    estilo: String
+    
+  },
 
   methods: {
     disparaAcao() {
@@ -19,10 +31,11 @@ export default {
   },
 
   computed: {
-      estiloBotao() {
-          if(this.estilo == 'padrao' || this.estilo == "") return 'botao botao-padrao';
-          if(this.estilo == 'perigo') return 'botao botao-perigo';
-      }
+    estiloBotao() {
+      if (this.estilo == "padrao" || this.estilo == "")
+        return "botao botao-padrao";
+      if (this.estilo == "perigo") return "botao botao-perigo";
+    }
   }
 };
 </script>
